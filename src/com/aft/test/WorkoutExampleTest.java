@@ -1,6 +1,8 @@
 package com.aft.test;
 
-import com.aft.workouts.*;
+import com.aft.main.workouts.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,13 +11,14 @@ public class WorkoutExampleTest {
 
     private static List<List<Workout>> workoutsForWeek = new ArrayList<>();
 
-    public static void main(String[] args) {
+    @Before
+    public void setUp() {
         System.out.println("=========WorkoutExampleTest==========");
         createWorkoutsForWeek();
-        displayWorkouts();
     }
 
-    private static void displayWorkouts() {
+    @Test
+    public void displayWorkoutsTest() {
         /**
          *
          * Precondition: A list of lists containing each day's workout(s)
@@ -61,33 +64,35 @@ public class WorkoutExampleTest {
          * Postcondition: The List workoutsForWeek will be populated with workouts for each day of week
          */
         List<Workout> day1Workouts = new ArrayList<>();
-        day1Workouts.add(new RainierDozenWorkout("12min", "Easy"));
-        day1Workouts.add(new HikeWorkout("30min", "Easy"));
+        day1Workouts.add(new RainierDozenWorkout("12min", "Easy",1,1));
+        day1Workouts.add(new HikeWorkout("30min", "Easy",1,1));
         workoutsForWeek.add(day1Workouts);
 
         List<Workout> day2Workouts = new ArrayList<>();
-        day2Workouts.add(new RainierDozenWorkout("12min", "Easy"));
-        day2Workouts.add(new StairIntervalTraining("40min", "Medium"));
+        day2Workouts.add(new RainierDozenWorkout("12min", "Easy",1,2));
+        day2Workouts.add(new StairIntervalTrainingWorkout("40min", "Medium",1,2));
         workoutsForWeek.add(day2Workouts);
 
         // rest day
         List<Workout> day3Workouts = new ArrayList<>();
+        day3Workouts.add(new Rest("","",1,3));
         workoutsForWeek.add(day3Workouts);
 
         List<Workout> day4Workouts = new ArrayList<>();
-        day4Workouts.add(new StrengthCircuitWorkout("25min", "Hard"));
+        day4Workouts.add(new StrengthCircuitWorkout("25min", "Hard",1,4));
         workoutsForWeek.add(day4Workouts);
 
         // rest day
         List<Workout> day5Workouts = new ArrayList<>();
+        day5Workouts.add(new Rest("","",1,5));
         workoutsForWeek.add(day5Workouts);
 
         List<Workout> day6Workouts = new ArrayList<>();
-        day6Workouts.add(new CrossTrainingWorkout("1hr", "Medium", "Bouldering"));
+        day6Workouts.add(new CrossTrainingWorkout("1hr", "Medium", 1,6,"Bouldering"));
         workoutsForWeek.add(day6Workouts);
 
         List<Workout> day7Workouts = new ArrayList<>();
-        day7Workouts.add(new HikeWorkout("2hr", "Medium", "N/A", 4.0));
+        day7Workouts.add(new HikeWorkout("2hr", "Medium", 1,7,"N/A", 4.0));
         workoutsForWeek.add(day7Workouts);
     }
 }
