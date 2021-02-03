@@ -1,4 +1,4 @@
-package com.aft.main.workouts;
+package workouts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,12 +17,11 @@ public class StrengthCircuitWorkout extends Workout {
             "Russian twists"
     };
 
-    public StrengthCircuitWorkout(String duration, String difficulty, int week, int day) {
-        super(duration, difficulty, week, day);
+    public StrengthCircuitWorkout(String name, String duration, String difficulty, int week, int day) {
+        super(name, duration, difficulty, week, day);
         this.exercises.addAll(Arrays.asList(DEFAULT_EXERCISES));
     }
 
-    @Override
     public String getName() {
         return "Strength Circuit";
     }

@@ -1,12 +1,10 @@
-package com.aft.test;
-
-import com.aft.main.workouts.StairIntervalTrainingWorkout;
 import org.junit.Assert;
 import org.junit.Test;
+import workouts.StairIntervalTrainingWorkout;
 
 public class StairIntervalTrainingWorkoutTest {
 
-    StairIntervalTrainingWorkout actual = new StairIntervalTrainingWorkout("1hr", "Medium", 1,1,"High-Intensity");
+    StairIntervalTrainingWorkout actual = new StairIntervalTrainingWorkout("stair interval","1hr", "Medium", 1,1,"High-Intensity");
 
     @Test
     public void getIntensityIfSpecified() {
@@ -15,7 +13,7 @@ public class StairIntervalTrainingWorkoutTest {
 
     @Test
     public void getIntensityIfUnspecified() {
-        actual = new StairIntervalTrainingWorkout("1hr", "Medium",1,1);
+        actual = new StairIntervalTrainingWorkout("stair INTERVAL","1hr", "Medium",1,1);
         Assert.assertEquals("Normal Intensity", actual.getIntensity());
     }
 }

@@ -1,4 +1,4 @@
-package com.aft.main.error;
+package error;
 
 public class IllFormedWorkout extends Exception {
     private String err;
