@@ -5,7 +5,9 @@ This project aims to create a platform for aspiring mountaineers to keep track o
 
 ### To Run Program
 - Navigate to project root folder
-- Run the command `./mvnw build`
+- Run the command `./mvnw clean package`
+- Navigate to folder with newly created .jar file
+- Run .jar file
 
 ### To Run Tests
 - From the project root folder, run the command `./mvnw test`

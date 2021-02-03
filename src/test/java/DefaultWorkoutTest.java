@@ -1,23 +1,11 @@
 import error.IllFormedWorkout;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import workouts.*;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultWorkoutTest {
-
-    private Path workingDir;
-
-    @Before
-    public void setUp() {
-        // Precond: set up relative path to test data
-        this.workingDir = Paths.get("", "src/test/resources");
-    }
 
     @Test
     public void ValidIntakeDefaultWorkoutTest() throws IllFormedWorkout {
@@ -30,7 +18,7 @@ public class DefaultWorkoutTest {
          * Postcondition: Assert that the preformed test file creates the workout objects expected in
          * our lists
          */
-        DefaultWorkout actual = new DefaultWorkout(workingDir.resolve("default.csv").toString());
+        DefaultWorkout actual = new DefaultWorkout("default.csv");
 
         List<RainierDozenWorkout> expectedRD = new ArrayList<>();
         List<HikeWorkout> expectedHike = new ArrayList<>();

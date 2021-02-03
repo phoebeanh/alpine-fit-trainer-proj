@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class DefaultWorkout {
 
+    private List<Workout> workouts = new ArrayList<>();
     private List<CrossTrainingWorkout> crossTrainingWorkouts = new ArrayList<>();
     private List<HikeWorkout> hikeWorkouts = new ArrayList<>();
     private List<RainierDozenWorkout> rainierDozenWorkouts = new ArrayList<>();
@@ -16,10 +17,10 @@ public class DefaultWorkout {
     private List<Rest> rests = new ArrayList<>();
 
     public DefaultWorkout(String path) {
-        // Precond: A file with valid workout information must exist
+        // Precond: A file with valid workout information must exist. This will search for the file name from the main resource folder.
         // Postcond: The default workout values will be stored in a List of Workouts as a variable to
         // the DefaultWorkout class.
-        try (Scanner scanner = new Scanner(new FileReader(path))) {
+        try (Scanner scanner = new Scanner(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(path))))) {
             // iterate through workout
             while (scanner.hasNext()) {
                 String line = scanner.nextLine();
@@ -27,9 +28,7 @@ public class DefaultWorkout {
             }
         } catch (IllFormedWorkout illFormedWorkout) {
             illFormedWorkout.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -92,5 +91,14 @@ public class DefaultWorkout {
 
     public List<Rest> getRests() {
         return rests;
+    }
+
+    public List<Workout> getWorkouts() {
+        workouts.addAll(crossTrainingWorkouts);
+        workouts.addAll(hikeWorkouts);
+        workouts.addAll(rainierDozenWorkouts);
+        workouts.addAll(stairIntervalWorkouts);
+        workouts.addAll(strengthCircuitWorkouts);
+        return workouts;
     }
 }
