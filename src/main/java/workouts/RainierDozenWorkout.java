@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * The Rainier Dozen is a set of exercises specified in the book, "Fit to Climb" by John Colver.
  * It consists of 12 exercises that help to strengthen muscles and stay in shape. These are a class
- * variable constant since these will not change
+ * variable constant since these will not change.
  */
 public class RainierDozenWorkout extends Workout{
 
@@ -35,5 +35,10 @@ public class RainierDozenWorkout extends Workout{
 
     public List<String> getExercises() {
         return exercises;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Exercises: " + Arrays.toString(RAINIER_DOZEN);
     }
 }

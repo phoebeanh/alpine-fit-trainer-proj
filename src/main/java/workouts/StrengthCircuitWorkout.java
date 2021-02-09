@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Strength training is used as part of the 3-pronged approach to mountain fitness. These exercises can vary per week,
+ * but a default list of exercises is provided.
+ */
 public class StrengthCircuitWorkout extends Workout {
 
     private List<String> exercises = new ArrayList<>();
@@ -37,5 +41,10 @@ public class StrengthCircuitWorkout extends Workout {
     public List<String> getExercises() {
         // precondition: the list of exercises is not empty
         return exercises;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Exercises: " + Arrays.toString(exercises.toArray());
     }
 }

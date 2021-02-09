@@ -1,11 +1,13 @@
 package workouts;
 
+import java.util.Arrays;
+
 /**
- * This exercise specifies stair climbing training
+ * Stair climbing training is used to build up the user's aerobic and anaerobic fitness by raising
+ * their anaerobic threshold.
  */
 public class StairIntervalTrainingWorkout extends Workout{
     private String intensity = "Normal Intensity";
-    private String name =  "Stair Interval";
 
     public StairIntervalTrainingWorkout(String name, String duration, String difficulty, int week, int day) {
         super(name, duration, difficulty, week, day);
@@ -16,12 +18,13 @@ public class StairIntervalTrainingWorkout extends Workout{
         this.intensity = intensity;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     public String getIntensity() {
         return this.intensity;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Intensity: " + intensity;
     }
 
 }

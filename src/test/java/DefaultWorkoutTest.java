@@ -1,4 +1,4 @@
-import error.IllFormedWorkout;
+import error.IllFormedWorkoutException;
 import org.junit.Assert;
 import org.junit.Test;
 import workouts.*;
@@ -8,7 +8,7 @@ import java.util.List;
 public class DefaultWorkoutTest {
 
     @Test
-    public void ValidIntakeDefaultWorkoutTest() throws IllFormedWorkout {
+    public void ValidIntakeDefaultWorkoutTest() throws IllFormedWorkoutException {
         /**
          * Precondition: Have test file named 'default.csv' in /src/com/aft/test resource's folder
          * Precond2: Create expected lists for each type of workout expected to come from the file:

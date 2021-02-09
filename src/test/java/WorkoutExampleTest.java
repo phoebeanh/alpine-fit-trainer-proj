@@ -1,4 +1,4 @@
-import error.IllFormedWorkout;
+import error.IllFormedWorkoutException;
 import org.junit.Before;
 import org.junit.Test;
 import workouts.*;
@@ -11,7 +11,7 @@ public class WorkoutExampleTest {
     private static List<List<Workout>> workoutsForWeek = new ArrayList<>();
 
     @Before
-    public void setUp() throws IllFormedWorkout {
+    public void setUp() throws IllFormedWorkoutException {
         System.out.println("=========WorkoutExampleTest==========");
         createWorkoutsForWeek();
     }
@@ -58,7 +58,7 @@ public class WorkoutExampleTest {
         }
     }
 
-    private static void createWorkoutsForWeek() throws IllFormedWorkout {
+    private static void createWorkoutsForWeek() throws IllFormedWorkoutException {
         /**
          * Postcondition: The List workoutsForWeek will be populated with workouts for each day of week
          */

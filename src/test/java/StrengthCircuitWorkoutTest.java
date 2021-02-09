@@ -8,6 +8,16 @@ import java.util.Arrays;
 public class StrengthCircuitWorkoutTest {
 
     StrengthCircuitWorkout actual;
+    private static String[] EXPECTED_EXERCISES = new String[]{
+            "Chair squats",
+            "High knees",
+            "Sumo squats",
+            "Bicycles",
+            "Mountain climbers",
+            "Push-ups",
+            "Russian twists",
+            "new exercise"
+    };
 
     @BeforeEach
     public void setUp() {
@@ -15,28 +25,18 @@ public class StrengthCircuitWorkoutTest {
     }
 
     @Test
-    public void addExercise() {
+    public void addExerciseTest() {
         /**
          * Postcond: user new exercise added to the object's internal exercises list
          */
 
         actual.addExercise("new exercise");
-        String[] expectedExercises = new String[]{
-                "Chair squats",
-                "High knees",
-                "Sumo squats",
-                "Bicycles",
-                "Mountain climbers",
-                "Push-ups",
-                "Russian twists",
-                "new exercise"
-        };
 
-        Assert.assertEquals(Arrays.asList(expectedExercises), actual.getExercises());
+        Assert.assertEquals(Arrays.asList(EXPECTED_EXERCISES), actual.getExercises());
     }
 
     @Test
-    public void removeAllExercises() {
+    public void removeAllExercisesTest() {
         /**
          * Postcond: remove exercises results in empty list
          */
@@ -46,6 +46,21 @@ public class StrengthCircuitWorkoutTest {
         actual.removeAllExercises();
 
         Assert.assertEquals(Arrays.asList(expectedExercises), actual.getExercises());
+    }
+
+    @Test
+    public void toStringShowsExercisesValueTest() {
+        StrengthCircuitWorkout actual = new StrengthCircuitWorkout("strength circuit", "1hr", "hard", 1,1);
+        String expected = "Workout: strength circuit, Duration: 1hr, Difficulty: hard, Week: 1, Day: 1, Exercises: " + Arrays.toString(new String[] {
+                "Chair squats",
+                "High knees",
+                "Sumo squats",
+                "Bicycles",
+                "Mountain climbers",
+                "Push-ups",
+                "Russian twists"
+        });
+        Assert.assertEquals(expected, actual.toString());
     }
 
 }
