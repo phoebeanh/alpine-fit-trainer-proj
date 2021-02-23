@@ -15,11 +15,9 @@ import java.util.stream.Collectors;
  */
 public class ScheduleFormatter implements Serializable {
     private List<Workout> workouts;
-    private int endIndex;
 
     public ScheduleFormatter(List<Workout> Workouts) {
         this.workouts = Workouts;
-        this.endIndex = Workouts.size()-1;
     }
 
     public ArrayList<? extends Workout> getWorkoutsForWeek(int week) {
@@ -37,7 +35,7 @@ public class ScheduleFormatter implements Serializable {
                     workoutsForWeek.add(workout);
                 }
                 // reaches end of workouts list, retries search through list to find next days' workouts in same week
-                if (workouts.indexOf(workout) == endIndex)
+                if (workouts.indexOf(workout) == getEndIndex())
                     day++;
             }
         }
@@ -65,7 +63,7 @@ public class ScheduleFormatter implements Serializable {
                     week++;
                 }
                 // reaches end of workouts list, retries search through list to find next days' workouts in same week
-                else if (workouts.indexOf(workout) == endIndex && week <= 16)
+                else if (workouts.indexOf(workout) == getEndIndex() && week <= 16)
                     day++;
             }
         }
@@ -91,6 +89,12 @@ public class ScheduleFormatter implements Serializable {
         formatted.forEach((workout -> System.out.println(workout + "\n")));
     }
 
+    /**
+     *
+     * @param workout
+     * Adds a new workout to the existing schedule
+     * @return a formatted array list of the schedule's workouts, now including the new one
+     */
     public ArrayList<? extends Workout> addWorkout(Workout workout) {
         this.workouts.add(workout);
         return getFormattedWorkouts();
@@ -119,5 +123,9 @@ public class ScheduleFormatter implements Serializable {
             removeWorkoutsFromDay(new ArrayList<>(Arrays.asList(workout)));
         else
             System.err.println("Workout does not exist in schedule.");
+    }
+
+    private int getEndIndex() {
+        return this.workouts.size() - 1;
     }
 }

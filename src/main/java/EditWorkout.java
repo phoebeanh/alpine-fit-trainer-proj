@@ -55,8 +55,6 @@ public class EditWorkout {
                         }
                 }
             }
-
-//            userInput.close();
         // return to main menu with new formatted schedule
         return this.formatter;
     }
@@ -104,7 +102,7 @@ public class EditWorkout {
                         System.out.println("Specify your hike pack weight, for example: none, 10lb, 50lb.");
                         String packWeight = scanner.nextLine();
 
-                        System.out.println("Specify your hikemileage, for example: 1mi, 10mi, etc.");
+                        System.out.println("Specify your hike mileage, for example: 1, 5.8. 10, etc.");
                         String mileage = scanner.nextLine();
 
                         this.formatter.addWorkout(new HikeWorkout
