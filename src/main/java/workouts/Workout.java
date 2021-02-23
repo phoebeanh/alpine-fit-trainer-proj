@@ -1,9 +1,13 @@
 package workouts;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *  base class of workouts
  */
-public abstract class Workout {
+public abstract class Workout implements Serializable {
     private String name;
     private String duration;
     private String difficulty;
@@ -40,15 +44,22 @@ public abstract class Workout {
     public boolean equals(Object object) {
         if (object instanceof Workout) {
             Workout workout = (Workout) object;
-            if (workout.getName().equals(this.getName()) &&
+            return workout.getName().equals(this.getName()) &&
                     workout.getDifficulty().equals(this.getDifficulty()) &&
                     workout.getDuration().equals(this.getDuration()) &&
                     workout.getWeek() == this.getWeek() &&
-                    workout.getDay() == this.getDay())
-                return true;
-            else
-                return false;
+                    workout.getDay() == this.getDay();
         } else
             return false;
+    }
+
+    public String[] toStringArray() {
+        List<String> data = new ArrayList<>();
+        data.add(this.name);
+        data.add(this.duration);
+        data.add(this.difficulty);
+        data.add(String.valueOf(this.week));
+        data.add(String.valueOf(this.week));
+        return data.toArray(new String[data.size()]);
     }
 }

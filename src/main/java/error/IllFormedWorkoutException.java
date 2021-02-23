@@ -8,7 +8,6 @@ public class IllFormedWorkoutException extends Exception {
         super(e);
     }
 
-    @Override
     public String getMessage(){
         return ("IllFormedWorkout Occurred: Workout does not match correct syntax") ;
     }

@@ -1,5 +1,6 @@
 package workouts;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * It consists of 12 exercises that help to strengthen muscles and stay in shape. These are a class
  * variable constant since these will not change.
  */
-public class RainierDozenWorkout extends Workout{
+public class RainierDozenWorkout extends Workout implements Serializable {
 
     private List<String> exercises = new ArrayList<>();
     private static final String[] RAINIER_DOZEN = new String[]{
@@ -40,5 +41,13 @@ public class RainierDozenWorkout extends Workout{
     @Override
     public String toString() {
         return super.toString() + ", Exercises: " + Arrays.toString(RAINIER_DOZEN);
+    }
+
+    @Override
+    public String[] toStringArray() {
+        List<String> data = new ArrayList<>();
+        data.addAll(Arrays.asList(super.toStringArray()));
+        data.add(this.exercises.toString());
+        return data.toArray(new String[data.size()]);
     }
 }

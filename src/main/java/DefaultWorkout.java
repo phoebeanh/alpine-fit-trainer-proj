@@ -4,7 +4,6 @@ import error.IllFormedWorkoutException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * The Default Workout class helps define the default schedule that the user will be given upon
@@ -26,10 +25,10 @@ public class DefaultWorkout {
          * Postcond: The default workout values will be stored in a List of Workouts as a variable to
          *          the DefaultWorkout class.
          */
-        try (Scanner scanner = new Scanner(new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(path))))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(path)))) {
             // iterate through workout
-            while (scanner.hasNext()) {
-                String line = scanner.nextLine();
+            String line;
+            while ((line = br.readLine()) != null) {
                 processDefaultWorkouts(line);
             }
         } catch (IllFormedWorkoutException illFormedWorkoutException) {
